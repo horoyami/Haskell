@@ -2,6 +2,10 @@ import Data.List
 
 data Tree a = Tree {value :: a, left :: (Tree a), mid :: (Tree a), right :: (Tree a)} | Null deriving (Show, Eq)
 
+instance Functor Tree where
+  fmap f Null = Null
+  fmap f (Tree v l m r) = Tree (f v) (fmap f l) (fmap f m) (fmap f r)
+
 eTree x = Tree x Null Null Null
 
 mergeLists a [] = a
