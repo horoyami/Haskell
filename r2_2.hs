@@ -3,9 +3,9 @@ antiprimes n = take n (diffList [1..lim] (createPrimes lim)) where
   lim = toInteger n * 2
 
   createPrimes :: Integer -> [Integer]
-  createPrimes n = helper [2..n] where
+  createPrimes k = helper [2..k] where
      helper []     = []
-     helper (p:xs) = p : helper (diffList xs [p^2, p^2+p..n])
+     helper (p:xs) = p : helper (diffList xs [p^(2 :: Int), p^(2 :: Int)+p..k])
 
   diffList :: [Integer] -> [Integer] -> [Integer]
   diffList [] _ = []
